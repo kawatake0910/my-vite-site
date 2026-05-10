@@ -1,27 +1,148 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>はじめてのWebサイト</title>
-
-    <!-- CSS読み込み -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>山田太郎のホームページ</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="app">
+    <header>
+      <h1>山田 太郎のホームページ</h1>
+      <p class="tagline">ようこそ！山田太郎の公式ホームページへ</p>
+      <hr />
+    </header>
 
-    <h1>こんにちは！</h1>
+    <nav>
+      <ul>
+        <li><a href="#profile">プロフィール</a></li>
+        <li><a href="#works">出演作品</a></li>
+        <li><a href="#schedule">スケジュール</a></li>
+        <li><a href="#gallery">ギャラリー</a></li>
+        <li><a href="#bbs">掲示板</a></li>
+      </ul>
+    </nav>
 
-    <p id="message">
-        これはローカル環境で動いています。
-    </p>
+    <hr />
 
-    <button id="changeButton">
-        クリック
-    </button>
+    <main>
+      <section id="profile">
+        <h2>■ プロフィール</h2>
+        <table class="profile-table">
+          <tr><th>名前</th><td>山田 太郎（やまだ たろう）</td></tr>
+          <tr><th>生年月日</th><td>1975年4月1日</td></tr>
+          <tr><th>出身地</th><td>東京都</td></tr>
+          <tr><th>血液型</th><td>A型</td></tr>
+          <tr><th>身長</th><td>178 cm</td></tr>
+          <tr><th>体重</th><td>70 kg</td></tr>
+          <tr><th>趣味</th><td>釣り、読書、そば打ち</td></tr>
+          <tr><th>特技</th><td>方言（津軽弁）、殺陣</td></tr>
+          <tr><th>所属事務所</th><td>株式会社ヤマダプロ</td></tr>
+        </table>
+      </section>
 
-    <!-- JavaScript読み込み -->
-    <script type="module" src="/src/main.js"></script>
+      <hr />
 
+      <section id="works">
+        <h2>■ 出演作品</h2>
+        <h3>▼ テレビドラマ</h3>
+        <ul>
+          <li>「東京物語2024」（NHK） - 主演・田村健役</li>
+          <li>「刑事・山岡の挑戦」（テレビ朝日） - 主演・山岡一郎役</li>
+          <li>「下町の太陽」（TBS） - 主演・大工の竜二役</li>
+        </ul>
+        <h3>▼ 映画</h3>
+        <ul>
+          <li>「遥かなる山」（2023年公開） - 主演</li>
+          <li>「夏の終わりに」（2021年公開） - 主演</li>
+          <li>「流れる川のように」（2019年公開） - 主演</li>
+        </ul>
+        <h3>▼ 舞台</h3>
+        <ul>
+          <li>「ハムレット」（2024年・新国立劇場） - ハムレット役</li>
+          <li>「桜の園」（2022年・Bunkamura） - ガーエフ役</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="schedule">
+        <h2>■ スケジュール</h2>
+        <table class="schedule-table">
+          <tr>
+            <th>日付</th>
+            <th>内容</th>
+            <th>場所</th>
+          </tr>
+          <tr>
+            <td>2025年6月1日</td>
+            <td>映画「遠い空」舞台挨拶</td>
+            <td>TOHOシネマズ新宿</td>
+          </tr>
+          <tr>
+            <td>2025年6月15日</td>
+            <td>ドラマ「太陽の季節」放送開始</td>
+            <td>フジテレビ 毎週日曜22時</td>
+          </tr>
+          <tr>
+            <td>2025年7月〜9月</td>
+            <td>舞台「リア王」公演</td>
+            <td>帝国劇場</td>
+          </tr>
+        </table>
+        <p class="note">※スケジュールは変更になる場合があります。最新情報はSNSをご確認ください。</p>
+      </section>
+
+      <hr />
+
+      <section id="gallery">
+        <h2>■ ギャラリー</h2>
+        <p>現在準備中です。しばらくお待ちください。</p>
+        <div class="gallery-placeholder">
+          <div class="photo-box">Photo 1</div>
+          <div class="photo-box">Photo 2</div>
+          <div class="photo-box">Photo 3</div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="bbs">
+        <h2>■ 掲示板</h2>
+        <div id="bbs-posts"></div>
+        <form id="bbs-form">
+          <div class="form-row">
+            <label for="bbs-name">お名前：</label>
+            <input type="text" id="bbs-name" placeholder="ハンドルネーム" maxlength="20" />
+          </div>
+          <div class="form-row">
+            <label for="bbs-msg">メッセージ：</label>
+            <textarea id="bbs-msg" rows="3" placeholder="ここにメッセージを入力..." maxlength="200"></textarea>
+          </div>
+          <button type="button" id="bbs-submit">書き込む</button>
+        </form>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer>
+      <p>
+        <small>
+          Copyright &copy; 2025 山田太郎オフィシャルサイト All Rights Reserved.<br />
+          お問い合わせ：<a href="mailto:info@yamadataro.example.com">info@yamadataro.example.com</a><br />
+          当サイトへのリンクはご自由にどうぞ。無断転載はお断りします。
+        </small>
+      </p>
+      <p>
+        <img src="https://www.w3.org/Icons/valid-html401" alt="Valid HTML" width="88" height="31" style="border:0" />
+        &nbsp;
+        <span class="visitor-count">アクセスカウンター：<span id="counter">000000</span></span>
+      </p>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
