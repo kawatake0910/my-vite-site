@@ -26,20 +26,22 @@ const text = (tag, value, className) => {
 const emptyState = (message) => text('p', message, 'content-empty')
 
 const renderIdentity = () => {
-  document.title = `${profile.nameEn} — Violinist`
+  document.title = `${profile.nameEn} | Official Site`
   document.querySelectorAll('[data-artist-name-en]').forEach((element) => {
     element.textContent = profile.nameEn
   })
   document.querySelectorAll('[data-artist-name-ja]').forEach((element) => {
     element.textContent = profile.nameJa
   })
-  $('[data-artist-copyright]').textContent = `© 2025 ${profile.nameEn}. All Rights Reserved.`
+  $('[data-artist-copyright]').textContent = `© ${new Date().getFullYear()} ${profile.nameEn}. All Rights Reserved.`
 }
 
 const renderProfile = () => {
   const photo = $('.profile-photo')
   photo.src = `${baseUrl}${profile.image.replace(/^\//, '')}`
   photo.alt = profile.imageAlt
+  $('.hero-photo').src = `${baseUrl}${profile.image.replace(/^\//, '')}`
+  $('.hero-photo').alt = ''
 
   $('#profile-body').replaceChildren(...profile.biography.map((paragraph) => text('p', paragraph)))
   $('#profile-details').replaceChildren(...profile.details.map(({ label, value }) => {
@@ -48,6 +50,7 @@ const renderProfile = () => {
     return row
   }))
   $('#profile-awards').replaceChildren(...profile.awards.map((award) => text('li', award)))
+  $('#profile-awards-section').hidden = profile.awards.length === 0
 }
 
 const renderNews = () => {
@@ -96,9 +99,9 @@ const renderEvents = () => {
       const action = document.createElement('div')
       action.className = 'concert-action'
       const ticket = document.createElement('a')
-      ticket.className = 'btn-ticket'
+      ticket.className = 'btn-detail'
       ticket.href = safeUrl(event.ticketUrl)
-      ticket.textContent = event.ticketLabel || '詳細・チケット'
+      ticket.textContent = event.ticketLabel || '詳細を見る'
       ticket.rel = 'noopener noreferrer'
       action.append(ticket)
       card.append(action)
@@ -139,6 +142,7 @@ const initialiseNavigation = () => {
     const isOpen = globalNav.classList.toggle('open')
     navToggle.classList.toggle('open', isOpen)
     navToggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く')
+    navToggle.setAttribute('aria-expanded', String(isOpen))
     document.body.style.overflow = isOpen ? 'hidden' : ''
   })
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => anchor.addEventListener('click', (event) => {
@@ -147,19 +151,14 @@ const initialiseNavigation = () => {
     event.preventDefault()
     globalNav.classList.remove('open')
     navToggle.classList.remove('open')
+    navToggle.setAttribute('aria-expanded', 'false')
     document.body.style.overflow = ''
     window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - header.offsetHeight - 16, behavior: 'smooth' })
   }))
 }
 
-const initialiseFilters = () => document.querySelectorAll('.filter-btn').forEach((button) => button.addEventListener('click', () => {
-  const filter = button.dataset.filter
-  document.querySelectorAll('.filter-btn').forEach((item) => item.classList.toggle('active', item === button))
-  document.querySelectorAll('.concert-card').forEach((card) => card.classList.toggle('hidden', filter !== 'all' && card.dataset.type !== filter))
-}))
-
 const initialiseAnimation = () => {
-  const targets = document.querySelectorAll('.news-item, .concert-card, .disc-card, .media-card, .profile-body p, .profile-awards li')
+  const targets = document.querySelectorAll('.news-item, .concert-card, .profile-body p, .profile-awards li')
   const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible')
@@ -180,5 +179,4 @@ renderNews()
 renderEvents()
 renderContact()
 initialiseNavigation()
-initialiseFilters()
 initialiseAnimation()
