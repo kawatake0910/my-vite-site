@@ -1,0 +1,94 @@
+backend:
+  name: github
+  repo: kawatake0910/my-vite-site
+  branch: master
+  # Cloudflare Workerで動作するGitHub OAuthプロキシです。
+  base_url: https://my-vite-cms-auth.kawatake0910.workers.dev
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: profile
+    label: プロフィール
+    files:
+      - name: profile
+        label: プロフィール本文
+        file: src/data/profile.json
+        format: json
+        fields:
+          - { name: image, label: プロフィール画像, widget: image }
+          - { name: imageAlt, label: 画像の説明, widget: string, hint: 画像を見られない人にも内容が伝わる説明を入力します。 }
+          - { name: biography, label: 本文, widget: list, field: { name: paragraph, label: 段落, widget: text } }
+          - name: details
+            label: 基本情報
+            widget: list
+            fields:
+              - { name: label, label: 項目名, widget: string }
+              - { name: value, label: 内容, widget: string }
+          - { name: awards, label: 受賞歴, widget: list, field: { name: award, label: 受賞歴, widget: string } }
+  - name: news
+    label: ニュース
+    files:
+      - name: news
+        label: ニュース一覧
+        file: src/data/news.json
+        format: json
+        fields:
+          - name: items
+            label: お知らせ
+            widget: list
+            fields:
+              - { name: id, label: 管理ID, widget: string, hint: 英数字とハイフンで一意に入力します。 }
+              - { name: status, label: 公開状態, widget: select, options: [draft, published, archived] }
+              - { name: publishedAt, label: 公開日, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+              - { name: category, label: 分類, widget: select, options: [Concert, CD, Media, Other] }
+              - { name: title, label: 見出し, widget: string }
+              - { name: url, label: 関連URL, widget: string, required: false }
+  - name: events
+    label: 公演情報
+    files:
+      - name: events
+        label: 公演一覧
+        file: src/data/events.json
+        format: json
+        fields:
+          - name: items
+            label: 公演
+            widget: list
+            fields:
+              - { name: id, label: 管理ID, widget: string }
+              - { name: status, label: 公開状態, widget: select, options: [draft, published, cancelled, archived] }
+              - { name: startAt, label: 開催日時, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ" }
+              - { name: category, label: 分類ID, widget: select, options: [solo, chamber, orchestra] }
+              - { name: categoryLabel, label: 分類表示名, widget: string }
+              - { name: title, label: 公演名, widget: string }
+              - { name: venue, label: 会場, widget: string }
+              - { name: timeNote, label: 開演時刻など, widget: string }
+              - { name: program, label: 曲目, widget: text }
+              - { name: ticketUrl, label: チケット・詳細URL, widget: string, required: false }
+              - { name: ticketLabel, label: ボタン表示, widget: string, required: false }
+              - { name: displayUntil, label: 掲載終了日, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+  - name: site
+    label: 連絡先・SNS
+    files:
+      - name: site
+        label: 連絡先・SNS
+        file: src/data/site.json
+        format: json
+        fields:
+          - name: contact
+            label: 連絡先
+            widget: list
+            fields:
+              - { name: label, label: 項目名, widget: string }
+              - { name: value, label: 表示内容, widget: string }
+              - { name: url, label: リンク先, widget: string, required: false }
+          - name: social
+            label: SNS
+            widget: list
+            fields:
+              - { name: label, label: サービス名, widget: string }
+              - { name: url, label: URL, widget: string }
