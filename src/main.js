@@ -1,3 +1,4 @@
+import './style.css'
 import profile from './data/profile.json'
 import newsData from './data/news.json'
 import eventsData from './data/events.json'
