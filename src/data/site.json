@@ -1,0 +1,4 @@
+{
+  "contact": [{ "label": "所属事務所", "value": "株式会社 トライアングル・アーティスツ" }, { "label": "Email", "value": "info@triangle-artists.example.com", "url": "mailto:info@triangle-artists.example.com" }, { "label": "Tel", "value": "03-XXXX-XXXX（平日 10:00–18:00）" }],
+  "social": []
+}
