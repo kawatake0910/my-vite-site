@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-vite-cms-auth",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-21",
+  "vars": {
+    "GITHUB_REPO_PRIVATE": "0",
+    "GITHUB_OAUTH_ID": "Ov23lifKxJV9sAwEFI41"
+  }
+}
