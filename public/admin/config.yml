@@ -46,7 +46,7 @@ collections:
               - { name: id, label: 管理ID, widget: string, hint: 英数字とハイフンで一意に入力します。 }
               - { name: status, label: 公開状態, widget: select, options: [draft, published, archived] }
               - { name: publishedAt, label: 公開日, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
-              - { name: category, label: 分類, widget: select, options: [Concert, CD, Media, Other] }
+              - { name: category, label: 分類, widget: select, options: [Activity, Media, Other] }
               - { name: title, label: 見出し, widget: string }
               - { name: url, label: 関連URL, widget: string, required: false }
   - name: events
@@ -70,8 +70,8 @@ collections:
               - { name: venue, label: 会場, widget: string }
               - { name: timeNote, label: 開演時刻など, widget: string }
               - { name: program, label: 曲目, widget: text }
-              - { name: ticketUrl, label: チケット・詳細URL, widget: string, required: false }
-              - { name: ticketLabel, label: ボタン表示, widget: string, required: false }
+              - { name: ticketUrl, label: 詳細ページURL, widget: string, required: false, hint: 主催者ページや公演案内など、詳しい情報へのURLを入力します。 }
+              - { name: ticketLabel, label: ボタン表示, widget: string, required: false, hint: 未入力の場合は「詳細を見る」と表示されます。 }
               - { name: displayUntil, label: 掲載終了日, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
   - name: site
     label: 連絡先・SNS
