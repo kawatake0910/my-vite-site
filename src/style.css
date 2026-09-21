@@ -1012,6 +1012,13 @@ body { overflow-x: hidden; }
   color: var(--gray);
   letter-spacing: 0.1em;
 }
+
+.content-empty {
+  color: var(--gray);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  padding: 24px 0;
+}
 .profile-photo {
   width: 100%;
   height: auto;
@@ -1095,7 +1102,7 @@ body { overflow-x: hidden; }
 
   .footer-inner { padding: 0 24px; }
 
-  
+
 }
 
 @media (max-width: 600px) {
