@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akari Suzuki — Violinist</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/src/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
         <h2 class="section-title">News</h2>
         <p class="section-title-ja">最新情報</p>
       </div>
-      <ul class="news-list">
+      <ul class="news-list" id="news-list" aria-live="polite">
         <li class="news-item">
           <time class="news-date">2025.05.01</time>
           <span class="news-tag tag-concert">Concert</span>
@@ -115,14 +115,14 @@
           <h2 class="section-title">Profile</h2>
           <p class="section-title-ja">プロフィール</p>
         </div>
-        <div class="profile-body">
+        <div class="profile-body" id="profile-body">
           <p>東京都生まれ。4歳よりヴァイオリンを始め、東京藝術大学附属音楽高等学校を経て同大学を首席で卒業。パリ国立高等音楽院大学院修了。</p>
           <p>在学中より国内外の主要なコンクールで入賞を重ね、2015年「日本音楽コンクール」第1位および特別賞受賞。翌年渡欧し、R.パスキエ、I.グラーフ各氏に師事。</p>
           <p>帰国後、ソロ活動を軸に室内楽・オーケストラ共演など幅広く活躍。NHK交響楽団、読売日本交響楽団、東京都交響楽団等と共演。使用楽器はJ.B.グァダニーニ（1773年製）。</p>
           <p>現在、桐朋学園大学音楽学部非常勤講師。</p>
         </div>
         <div class="profile-bio-detail">
-          <table class="bio-table">
+          <table class="bio-table" id="profile-details">
             <tr><th>出身地</th><td>東京都</td></tr>
             <tr><th>師事</th><td>田中千恵子、R.パスキエ、I.グラーフ</td></tr>
             <tr><th>使用楽器</th><td>J.B.グァダニーニ（1773年製）</td></tr>
@@ -131,7 +131,7 @@
         </div>
         <div class="profile-awards">
           <h3 class="subsection-title">受賞歴</h3>
-          <ul>
+          <ul id="profile-awards">
             <li>2015年 日本音楽コンクール 第1位・特別賞</li>
             <li>2013年 東京音楽コンクール 第2位</li>
             <li>2012年 全日本学生音楽コンクール 全国第1位</li>
@@ -157,7 +157,7 @@
         <button class="filter-btn" data-filter="orchestra">オーケストラ</button>
       </div>
 
-      <div class="concert-list">
+      <div class="concert-list" id="concert-list" aria-live="polite">
 
         <article class="concert-card" data-type="solo">
           <div class="concert-date-block">
@@ -355,7 +355,7 @@
       </div>
       <div class="contact-body">
         <p>コンサート出演依頼・メディア取材・その他お問い合わせは、所属事務所までご連絡ください。</p>
-        <div class="contact-info">
+        <div class="contact-info" id="contact-info">
           <div class="contact-row">
             <span class="contact-label">所属事務所</span>
             <span>株式会社 トライアングル・アーティスツ</span>
@@ -369,7 +369,7 @@
             <span>03-XXXX-XXXX（平日 10:00–18:00）</span>
           </div>
         </div>
-        <div class="social-links">
+        <div class="social-links" id="social-links">
           <a href="#" class="social-btn" aria-label="Twitter">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
@@ -400,6 +400,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
