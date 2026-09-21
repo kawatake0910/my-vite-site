@@ -25,6 +25,17 @@ const text = (tag, value, className) => {
 
 const emptyState = (message) => text('p', message, 'content-empty')
 
+const renderIdentity = () => {
+  document.title = `${profile.nameEn} — Violinist`
+  document.querySelectorAll('[data-artist-name-en]').forEach((element) => {
+    element.textContent = profile.nameEn
+  })
+  document.querySelectorAll('[data-artist-name-ja]').forEach((element) => {
+    element.textContent = profile.nameJa
+  })
+  $('[data-artist-copyright]').textContent = `© 2025 ${profile.nameEn}. All Rights Reserved.`
+}
+
 const renderProfile = () => {
   const photo = $('.profile-photo')
   photo.src = `${baseUrl}${profile.image.replace(/^\//, '')}`
@@ -163,6 +174,7 @@ const initialiseAnimation = () => {
   })
 }
 
+renderIdentity()
 renderProfile()
 renderNews()
 renderEvents()
