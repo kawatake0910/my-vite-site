@@ -19,6 +19,8 @@ collections:
         file: src/data/profile.json
         format: json
         fields:
+          - { name: nameJa, label: 氏名（日本語）, widget: string }
+          - { name: nameEn, label: 氏名（英字）, widget: string, hint: サイトの英字表記・ブラウザのページ名に使用します。 }
           - { name: image, label: プロフィール画像, widget: image }
           - { name: imageAlt, label: 画像の説明, widget: string, hint: 画像を見られない人にも内容が伝わる説明を入力します。 }
           - { name: biography, label: 本文, widget: list, field: { name: paragraph, label: 段落, widget: text } }
